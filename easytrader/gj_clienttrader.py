@@ -44,13 +44,13 @@ class GJClientTrader(clienttrader.BaseLoginClientTrader):
 
             self._app.top_window().Edit1.type_keys(user)
             self._app.top_window().Edit2.type_keys(password)
-            edit3 = self._app.top_window().window(control_id=0x3eb)
+            # edit3 = self._app.top_window().window(control_id=0x3eb)
             while True:
                 try:
-                    code = self._handle_verify_code()
-                    edit3.type_keys(code)
+                    # code = self._handle_verify_code()
+                    # edit3.type_keys(code)
                     time.sleep(1)
-                    self._app.top_window()["确定(Y)"].click()
+                    self._app.top_window()["登录"].click()
                     # detect login is success or not
                     try:
                         self._app.top_window().wait_not("exists", 5)
@@ -67,7 +67,8 @@ class GJClientTrader(clienttrader.BaseLoginClientTrader):
             self._app = pywinauto.Application().connect(
                 path=self._run_exe_path(exe_path), timeout=10
             )
-        self._main = self._app.window(title="网上股票交易系统5.0")
+        # self._main = self._app.window(title="网上股票交易系统5.0")
+        self._main = self._app.window(title="国金全能行远航版")
 
     def _handle_verify_code(self):
         control = self._app.top_window().window(control_id=0x5db)

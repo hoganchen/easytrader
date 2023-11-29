@@ -1,0 +1,5 @@
+https://docs.python.org/zh-cn/3/library/unittest.html
+
+需要在当前目录下执行unittest，否则test_easytrader.py文件中执行的import easytrader是import系统中安装好的easytrader package，而不是当前目录下的easytrader
+
+python -m unittest tests.test_easytrader.TestGJClientTrader.test_balance
