@@ -77,13 +77,13 @@ return::
 
 setup(
     name="easytrader",
-    version="0.23.0",
+    version="0.23.1",
     description="A utility for China Stock Trade",
     long_description=long_desc,
-    author="shidenggui",
-    author_email="longlyshidenggui@gmail.com",
+    author="shidenggui; hogan chen",
+    author_email="longlyshidenggui@gmail.com; hogan.chen@ymail.com",
     license="BSD",
-    url="https://github.com/shidenggui/easytrader",
+    url="https://github.com/shidenggui/easytrader;  https://github.com/hoganchen/easytrader",
     keywords="China stock trade",
     install_requires=[
         "requests",
