@@ -199,9 +199,14 @@ class TestGJClientTrader(unittest.TestCase):
 
         # cls._user.connect(r'C:\qnx\xiadan.exe')
 
+    @classmethod
+    def tearDownClass(cls):
+        cls._user.close()
+
     def test_balance(self):
         time.sleep(3)
         result = self._user.balance
+        # self._user.close()
         print(result)
 
     def test_position(self):

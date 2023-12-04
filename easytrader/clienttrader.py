@@ -101,6 +101,9 @@ class ClientTrader(IClientTrader):
     def config(self):
         return self._config
 
+    def close(self):
+        self._main.close()
+
     def connect(self, exe_path=None, **kwargs):
         """
         直接连接登陆后的客户端

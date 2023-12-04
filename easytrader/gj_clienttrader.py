@@ -67,6 +67,13 @@ class GJClientTrader(clienttrader.BaseLoginClientTrader):
             self._app = pywinauto.Application().connect(
                 path=self._run_exe_path(exe_path), timeout=10
             )
+        else:
+            pass
+            # 密码锁定后解锁，不能正常工作，原因待查
+            # if self._app.top_window().window(title_re="国金全能行远航版-.*").exists():
+            #     self._app.top_window().Edit.type_keys(password)
+            #     self._app.top_window()["确定"].click()
+
         # self._main = self._app.window(title="网上股票交易系统5.0")
         self._main = self._app.window(title="国金全能行远航版")
 
