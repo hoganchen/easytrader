@@ -103,6 +103,7 @@ class Copy(BaseStrategy):
                 count = 5
                 found = False
                 while count > 0:
+                     # 0x965 = 2405, 验证码窗体中验证码的control_id
                     self._trader.app.top_window().window(
                         control_id=0x965, class_name="Static"
                     ).capture_as_image().save(
@@ -113,6 +114,7 @@ class Copy(BaseStrategy):
                     captcha_num = "".join(captcha_num.split())
                     logger.info("captcha result-->" + captcha_num)
                     if len(captcha_num) == 4:
+                        # 0x964 = 2404, 验证码窗体中编辑框的control_id
                         self._trader.app.top_window().window(
                             control_id=0x964, class_name="Edit"
                         ).set_text(
@@ -120,14 +122,17 @@ class Copy(BaseStrategy):
                         )  # 模拟输入验证码
 
                         self._trader.app.top_window().set_focus()
-                        pywinauto.keyboard.SendKeys("{ENTER}")  # 模拟发送enter，点击确定
+                        # pywinauto.keyboard.SendKeys("{ENTER}")  # 模拟发送enter，点击确定
+                        pywinauto.keyboard.send_keys("{ENTER}")  # 使用send_keys代替废弃的SendKeys方法，模拟发送enter，点击确定
                         try:
+                            # 0x966 = 2406, 验证码窗体中验证码错误提示文本框的control_id
                             logger.info(
                                 self._trader.app.top_window()
                                     .window(control_id=0x966, class_name="Static")
                                     .window_text()
                             )
                         except Exception as ex:  # 窗体消失
+                            # 如果没有出现验证码错误提示，则表示验证码正确输入
                             logger.exception(ex)
                             found = True
                             break
